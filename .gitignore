@@ -1,0 +1,7 @@
+.idea
+
+PetProject/bin/*
+PetProject/.vscode/*
+PetProject/obj/*
+PetProject/.vs/*
+
