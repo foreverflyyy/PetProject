@@ -23,6 +23,10 @@ builder.Services.Configure<Person>(builder.Configuration);
 
 var app = builder.Build();
 
+// обработка ошибок HTTP
+app.UseStatusCodePages();
+
+// Использование Сессий
 app.UseSession();
 
 // поддержка страниц html по умолчанию, добавляем поддержку статических файлов
