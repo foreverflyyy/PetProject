@@ -2,40 +2,52 @@ using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetProject.Extensions;
+using Microsoft.Extensions.Options;
+using System.Text;
 
 namespace PetProject.Controllers
 {
     //public class StartMiddleware : ControllerBase
-    public class ReadMiddleware
+    class PersonMiddleware
     {
-        RequestDelegate next;
-        public ReadMiddleware(RequestDelegate next)
+        private readonly RequestDelegate next;
+        public Person Person { get; }
+        public PersonMiddleware(RequestDelegate next, IOptions<Person> options)
         {
             this.next = next;
+            Person = options.Value;
         }
-        public async Task InvokeAsync(HttpContext context, IReadText readText)
+
+        public async Task InvokeAsync(HttpContext context)
         {
-            if(context.Request.Path == "/read")
-                await context.Response.WriteAsync($"Read number: {readText.Read()}");
-            else
-                await next.Invoke(context);
+            StringBuilder stringBuilder = new();
+            context.Response.ContentType = "text/html; charset=utf-8";
+            stringBuilder.Append($"<p>Name: {Person.Name}</p>");
+            stringBuilder.Append($"<p>Age: {Person.Age}</p>");
+            stringBuilder.Append($"<p>Company: {Person.Company?.Title}</p>");
+            stringBuilder.Append("<p>Languages:</p><ul>");
+            foreach (var lang in Person.Languages)
+            {
+                stringBuilder.Append($"<li><p>{lang}</p></li>");
+            }
+            stringBuilder.Append("</ul>");
+        
+            await context.Response.WriteAsync(stringBuilder.ToString());
         }
     }
 
-    public class GenerateMiddleware
+    public class Person
     {
-        RequestDelegate next;
-        public GenerateMiddleware(RequestDelegate next)
-        {
-            this.next = next;
-        }
-        public async Task InvokeAsync(HttpContext context, IGenerateText generate)
-        {
-            if(context.Request.Path == "/generate")
-                await context.Response.WriteAsync($"Generate number: {generate.Generate()}");
-            else
-                await next.Invoke(context);
-        }
+        public string Name { get; set;} = "";
+        public int Age { get; set; }
+        public List<string> Languages { get; set; } = new();
+        public Company? Company { get; set; }
+    }
+
+    public class Company 
+    {
+        public string Country { get; set; } = "";
+        public string Title { get; set; } = "";
     }
 }
 
