@@ -1,9 +1,13 @@
 using PetProject.Controllers;
 using PetProject.Configuration;
+using PetProject.FileLogger;
 
 // изменяем папку для хранения статических файлов
 //var builder = WebApplication.CreateBuilder(new WebApplicationOptions {WebRootPath = "static"}); 
 var builder = WebApplication.CreateBuilder(); 
+
+// устанавливаем файл для логгирования
+builder.Logging.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
 
 //builder.Services.AddTransient<TimeService>();
 //builder.Services.AddSingleton<StartService>();
@@ -29,7 +33,18 @@ app.Map(
     (string phone) => $"Phone: {phone}."
 );*/
 
-app.UseMiddleware<PersonMiddleware>();
+//app.UseMiddleware<PersonMiddleware>();
+
+app.Map("/hello", (ILogger<Program> logger) => {
+    logger.LogInformation("Wow, its logs!");
+    return "hello";
+});
+
+app.Map("/hi", (ILoggerFactory loggerFactory) => {
+    ILogger logger = loggerFactory.CreateLogger("DefaultFile");
+    logger.LogInformation("Wow, its logs!");
+    return "hello";
+});
 
 // добавляет компонент middleware, который позволяет передать обработку запроса далее следующим в конвейере компонентам.
 /*app.Use(async (context, next) => 
