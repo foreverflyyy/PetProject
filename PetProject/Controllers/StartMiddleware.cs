@@ -6,19 +6,35 @@ using PetProject.Extensions;
 namespace PetProject.Controllers
 {
     //public class StartMiddleware : ControllerBase
-    public class StartMiddleware
+    public class ReadMiddleware
     {
         RequestDelegate next;
-        int i = 0; // счетчик запросов
-        public StartMiddleware(RequestDelegate next)
+        public ReadMiddleware(RequestDelegate next)
         {
             this.next = next;
         }
-        public async Task InvokeAsync(HttpContext httpContext, IStartClass start, StartService startService)
+        public async Task InvokeAsync(HttpContext context, IReadText readText)
         {
-            i++;
-            httpContext.Response.ContentType = "text/html;charset=utf-8";
-            await httpContext.Response.WriteAsync($"Запрос {i}; Counter: {start.Value}; Service: {startService.Counter.Value}");
+            if(context.Request.Path == "/read")
+                await context.Response.WriteAsync($"Read number: {readText.Read()}");
+            else
+                await next.Invoke(context);
+        }
+    }
+
+    public class GenerateMiddleware
+    {
+        RequestDelegate next;
+        public GenerateMiddleware(RequestDelegate next)
+        {
+            this.next = next;
+        }
+        public async Task InvokeAsync(HttpContext context, IGenerateText generate)
+        {
+            if(context.Request.Path == "/generate")
+                await context.Response.WriteAsync($"Generate number: {generate.Generate()}");
+            else
+                await next.Invoke(context);
         }
     }
 }

@@ -2,12 +2,26 @@
 
 namespace PetProject.Controllers
 {
-    public class StartService
+    public interface IReadText
     {
-        public IStartClass Counter { get; }
-        public StartService(IStartClass counter)
+        public int Read();
+    }
+
+    public interface IGenerateText
+    {
+        public int Generate();
+    }
+
+    public class StartService : IReadText, IGenerateText
+    {
+        int value;
+
+        public int Generate()
         {
-            Counter = counter;
+            value = new Random().Next();
+            return value;
         }
+
+        public int Read() => value;
     }
 }
