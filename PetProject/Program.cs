@@ -4,8 +4,8 @@ using PetProject.FileLogger;
 using PetProject.Sessions;
 
 // изменяем папку для хранения статических файлов
-//var builder = WebApplication.CreateBuilder(new WebApplicationOptions {WebRootPath = "static"}); 
-var builder = WebApplication.CreateBuilder(); 
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions { WebRootPath = "static" });
+//var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
@@ -46,32 +46,45 @@ app.Map(
 //app.UseMiddleware<PersonMiddleware>();
 
 // Два вида реализации логгов
-app.Map("/hello", (ILogger<Program> logger) => {
-    logger.LogInformation("Wow, its logs!");
-    return "hello";
-});
-
-app.Map("/hi", (ILoggerFactory loggerFactory) => {
-    ILogger logger = loggerFactory.CreateLogger("DefaultFile");
-    logger.LogInformation("Wow, its logs!");
-    return "hello";
-});
-
-app.Run(async (context) =>
+app.Map("/hello", (ILogger<Program> logger) =>
 {
-    // Если у нас уже в сессии(в словаре сессии) имеется запись с нужным ключом, то выводим её, если нет, то записываем
-    if (context.Session.Keys.Contains("person"))
-    {
-        Person? person = context.Session.Get<Person>("person");
-        await context.Response.WriteAsync($"Hello {person?.Name}, your age: {person?.Age}!");
-    }
-    else
-    {
-        Person person = new Person { Name = "Tom", Age = 22 };
-        context.Session.Set<Person>("person", person);
-        await context.Response.WriteAsync("Hello World! I created new sessions data");
-    }
+   logger.LogInformation("Wow, its logs!");
+   return "hello";
 });
+
+app.Map("/hi", (ILoggerFactory loggerFactory) =>
+{
+   ILogger logger = loggerFactory.CreateLogger("DefaultFile");
+   logger.LogInformation("Wow, its logs!");
+   return "hello";
+});
+
+app.Map("/files", () =>
+{
+   string path = "Files/brothers.jpg";
+   string contentType = "image/jpg";
+   string downloadName = "beutiful_persons.jpg";
+   return Results.File(path, contentType, downloadName);
+});
+app.Map("/about", () => Results.Ok("Laudate omnes gentes laudate"));
+
+app.Map("/", () => "Hello World");
+
+/*app.Run(async (context) =>
+{
+   // Если у нас уже в сессии(в словаре сессии) имеется запись с нужным ключом, то выводим её, если нет, то записываем
+   if (context.Session.Keys.Contains("person"))
+   {
+      Person? person = context.Session.Get<Person>("person");
+      await context.Response.WriteAsync($"Hello {person?.Name}, your age: {person?.Age}!");
+   }
+   else
+   {
+      Person person = new Person { Name = "Tom", Age = 22 };
+      context.Session.Set<Person>("person", person);
+      await context.Response.WriteAsync("Hello World! I created new sessions data");
+   }
+});*/
 
 // добавляет компонент middleware, который позволяет передать обработку запроса далее следующим в конвейере компонентам.
 /*app.Use(async (context, next) => 

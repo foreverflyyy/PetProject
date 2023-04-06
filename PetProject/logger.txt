@@ -11,3 +11,28 @@ Now listening on: http://localhost:5012
 Application started. Press Ctrl+C to shut down.
 Hosting environment: Development
 Content root path: D:\workSpaceNU\primat\PetProject\PetProject\
+Now listening on: https://localhost:7257
+Now listening on: http://localhost:5012
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\dream\WEB\PetProject\petproject\
+Application is shutting down...
+Now listening on: https://localhost:7257
+Now listening on: http://localhost:5012
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\dream\WEB\PetProject\petproject\
+Application is shutting down...
+Now listening on: https://localhost:7257
+Now listening on: http://localhost:5012
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\dream\WEB\PetProject\petproject\
+An unhandled exception has occurred while executing the request.
+Application is shutting down...
+Now listening on: https://localhost:7257
+Now listening on: http://localhost:5012
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\dream\WEB\PetProject\petproject\
+Application is shutting down...
