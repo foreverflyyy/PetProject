@@ -1,16 +1,18 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// добавляем поддержку контроллеров и представлений
 builder.Services.AddControllersWithViews();
+
+// добавляем сервис ITimeService
+builder.Services.AddTransient<ITimeService, SimpleTimeService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+   app.UseExceptionHandler("/Home/Error");
+   app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -20,8 +22,17 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+// сопоставление маршрутов с контроллерами, использование только маршрутизацию на основе атрибутов
+app.MapControllers();
 
 app.Run();
+
+
+public interface ITimeService
+{
+   string Time { get; }
+}
+public class SimpleTimeService : ITimeService
+{
+   public string Time => DateTime.Now.ToString("hh:mm:ss");
+}

@@ -1,31 +1,44 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using PetProject.Models;
 
-namespace PetProject.Controllers;
-
-public class HomeController : Controller
+namespace PetProject.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
+   //[ApiController]
+   //[Route("{api/[controller]}"), AllowAnonymous]
+   [Route("api/{controller}")]
+   public class HomeController : ControllerBase
+   {
+      private readonly ILogger<HomeController> _logger;
+      private readonly ITimeService timeService;
 
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
+      public HomeController(ILogger<HomeController> logger, ITimeService timeServ)
+      {
+         _logger = logger;
+         timeService = timeServ;
+      }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+      [HttpGet("index")]
+      //[Route("index")]
+      public IResult Index()
+      {
+         return Results.Ok($"<h2>Hello METANIT.COM!</h2>. Now time {timeService.Time}");
+      }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+      public IActionResult WrongRequest(string? name)
+      {
+         if (string.IsNullOrEmpty(name))
+            return BadRequest("Name undefined");
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+         return Content($"Name: {name}");
+      }
+
+      [HttpGet]
+      public string CheckWorking() => "Hello, all good!";
+
+      [HttpPost]
+      public string SetValue() => "Like i install value";
+   }
 }
+
