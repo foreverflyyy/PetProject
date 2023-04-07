@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.32" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\" />
+  </ItemGroup>
+
 </Project>

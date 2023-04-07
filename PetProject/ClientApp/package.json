@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "aspnet-prerendering": "^3.0.1"
+  }
+}
