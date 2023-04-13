@@ -17,7 +17,7 @@
 
         /*используется для автоматического добавления необходимых компонентов во время разработки, 
         чтобы определить, запущен ли прокси-сервер, и запустить его в противном случае*/
-        //"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
       }
     },
     "IIS Express": {
