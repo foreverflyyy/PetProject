@@ -8,7 +8,11 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <!-- управляет URL-адресом, на котором сервер ожидает выполнения прокси-сервера SPA.
+      - Сервер проверяет связь после запуска прокси-сервера, чтобы узнать, готов ли он.
+      - Где он перенаправляет браузер после успешного ответа. -->
     <SpaProxyServerUrl>https://localhost:44477</SpaProxyServerUrl>
+    <!-- команда, используется сервером для запуска прокси-сервера SPA, когда обнаруживает, что прокси-сервер не запущен. -->
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
