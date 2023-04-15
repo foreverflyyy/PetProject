@@ -1,3 +1,5 @@
+import { ErrorMessage } from './components/ErrorMessage';
+import { Loading } from './components/Loading';
 import { Product } from './components/Product';
 import { useProducts } from './hooks/products';
 
@@ -8,8 +10,8 @@ function App() {
    return (
       <div className="App">
          <p> Hello everyone! </p>
-         {error && <p className="product-serror">{error}</p>}
-         {loading && <p className="product-loading"> Loading... </p>}
+         {error && <ErrorMessage message={error} />}
+         {loading && <Loading />}
          {products.map(product => <Product key={product.id} product={product} />)}
       </div>
    );
