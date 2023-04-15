@@ -1,24 +1,15 @@
-import React, { useEffect } from 'react';
-import { IProduct } from './models';
-import axios from 'axios';
 import { Product } from './components/Product';
+import { useProducts } from './hooks/products';
 
 function App() {
 
-   const [products, setProducts] = React.useState<IProduct[]>([]);
-
-   async function GetResponse() {
-      const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products?limit=5');
-      setProducts(response.data);
-   }
-
-   useEffect(() => {
-      GetResponse();
-   }, []);
+   const { error, loading, products } = useProducts();
 
    return (
       <div className="App">
          <p> Hello everyone! </p>
+         {error && <p className="product-serror">{error}</p>}
+         {loading && <p className="product-loading"> Loading... </p>}
          {products.map(product => <Product key={product.id} product={product} />)}
       </div>
    );

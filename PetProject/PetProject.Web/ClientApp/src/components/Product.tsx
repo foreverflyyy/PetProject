@@ -1,5 +1,5 @@
 import { IProduct } from "../models";
-import '../styles/product'
+import '../styles/product.css'
 
 interface ProductProps {
    product: IProduct
