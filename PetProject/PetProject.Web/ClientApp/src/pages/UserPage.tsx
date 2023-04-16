@@ -3,21 +3,21 @@ import { CreateUser } from '../components/CreateUser';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { Loading } from '../components/Loading';
 import { Modal } from '../components/Modal';
-import { Product } from '../components/Product';
-import { useProducts } from '../hooks/products';
-import { IProduct } from '../models';
-import '../styles/product.css'
+import { User } from '../components/Product';
+import { useUsers } from '../hooks/products';
+import { IUser } from '../models';
+import '../styles/user.css'
 import { ModalContext } from '../context/ModalContext';
 
-export function ProductPage() {
+export function UserPage() {
 
-   const { error, loading, products, AddProduct } = useProducts();
+   const { error, loading, users, AddUser } = useUsers();
 
    const { modal, open, close } = useContext(ModalContext)
 
-   const createHandler = (product: IProduct) => {
+   const createHandler = (user: IUser) => {
       close();
-      AddProduct(product);
+      AddUser(user);
    }
 
    return (
@@ -25,7 +25,7 @@ export function ProductPage() {
          <p> Hello everyone! </p>
          {error && <ErrorMessage message={error} />}
          {loading && <Loading />}
-         {products.map(product => <Product key={product.id} product={product} />)}
+         {users.map(user => <User key={user.id} user={user} />)}
 
          {modal && <Modal onClose={close}>
             <CreateUser onCreate={createHandler} />

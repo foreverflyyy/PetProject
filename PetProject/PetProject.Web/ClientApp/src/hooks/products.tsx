@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
-import { IProduct } from '../models';
+import { IUser } from '../models';
 import axios, { AxiosError } from 'axios';
-import '../styles/product.css'
+import '../styles/user.css'
 
-export function useProducts() {
+export function useUsers() {
 
-   const [products, setProducts] = useState<IProduct[]>([]);
+   const [users, setUsers] = useState<IUser[]>([]);
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState('');
 
-   function AddProduct(product: IProduct) {
-      setProducts(prev => [...prev, product]);
+   function AddUser(user: IUser) {
+      setUsers(prev => [...prev, user]);
    }
 
    async function GetResponse() {
       try {
          setError('');
          setLoading(true);
-         const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products?limit=5');
-         setProducts(response.data);
+         const response = await axios.get<IUser[]>('https://localhost:5001/api/users');
+         setUsers(response.data);
          setLoading(false);
       } catch (e: unknown) {
          const error = e as AxiosError;
@@ -31,5 +31,5 @@ export function useProducts() {
       GetResponse();
    }, []);
 
-   return { error, loading, products, AddProduct }
+   return { error, loading, users, AddUser }
 }
