@@ -1,19 +1,19 @@
-import { ErrorMessage } from './components/ErrorMessage';
-import { Loading } from './components/Loading';
-import { Product } from './components/Product';
-import { useProducts } from './hooks/products';
+import { Navigation } from "./components/Navigation";
+import { Route, Routes } from 'react-router-dom'
+import { ProductPage } from "./pages/ProductPage";
+import { AboutPage } from "./pages/AboutPage";
 
 function App() {
 
-   const { error, loading, products } = useProducts();
-
    return (
-      <div className="App">
-         <p> Hello everyone! </p>
-         {error && <ErrorMessage message={error} />}
-         {loading && <Loading />}
-         {products.map(product => <Product key={product.id} product={product} />)}
-      </div>
+      <>
+         <Navigation />
+         <Routes>
+            <Route path="/" element={<ProductPage />} />
+            <Route path="/about" element={<AboutPage />} />
+         </Routes>
+      </>
+
    );
 }
 

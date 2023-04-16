@@ -1,3 +1,37 @@
+/*.popup__img{
+   display: flex;
+   flex-wrap: wrap;
+}
+.popup__img img{
+   width: 20%;
+   padding: 10px 10px 0px 0px;
+}
+.menu__item-photo {
+   padding: 0px 0px 50% 0px;
+   position: relative;
+}
+.menu__item-photo img {
+   width: 100%;
+   height: 100%;
+   height: 50%;
+   position: absolute;
+   left: 0;
+   top: 0;
+   object-fit: cover;
+}
+
+.container {
+   width: 100%;
+   max-width: 1180px;
+   margin: 0 auto;
+   position: relative;
+}
+.content-wrapper {
+   width: 100%;
+   margin-top: 78px;
+   padding: 10px;
+   line-height: 34px;
+}*/
 
 .product-img {
    width: 100px;
@@ -6,3 +40,88 @@
 .error-request{
    color: red;
 }
+
+.modal-background{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.719);
+   overflow-y: auto;
+   overflow-x: hidden;
+}
+
+.modal-window{
+   visibility: visible;
+   width: 500px;
+   padding: 5px;
+   background: #fff;
+   position: absolute;
+   top: 10%;
+   left: 35%;
+}
+
+.modal-content{
+   background-color: #fff;
+   color: #000;
+   max-width: 800px;
+   padding: 30px;
+}
+
+.btn-create-user{
+   color: rgb(35, 34, 34);
+   padding-bottom: 2px;
+   padding-right: 4px;
+   border: solid 3px rgba(0, 0, 0, 0.442);
+   background: rgba(45, 57, 226, 0.707);
+}
+
+.btn-create-user :hover{
+   color: rgb(255, 255, 255);
+   background: rgba(57, 58, 76, 0.707);
+}
+
+.form-create-user{
+   border: solid 1px;
+   padding-bottom: 2px;
+   padding-right: 4px;
+   margin-bottom: 2px;
+}
+
+.button-create{
+   font-size: 30px;
+   color: #fff;
+   position: fixed;
+   background-color: rgba(0, 0, 255, 0.521);
+   bottom: 10px;
+   right: 10px;
+   border-radius: 15px;
+}
+
+/*.popup__close {
+   position: absolute;
+   right: 10px;
+   top: 10px;
+   font-size: 25px;
+   color: #000;
+}
+.popup__title {
+   font-size: 40px;
+   margin: 0px 0px 1em 0px;
+}
+.popup__main-content{
+   display: flex;
+   flex-wrap: wrap;
+}
+.popup-headline{
+   display: flex;
+   flex-direction: column;
+}
+.popup-headline__text p{
+   padding-top: 15px;
+   font-style: italic;
+}
+.popup__text{
+   padding: 15px 30px 0px 0px;
+}*/
