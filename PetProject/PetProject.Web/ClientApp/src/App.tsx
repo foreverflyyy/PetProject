@@ -1,26 +1,19 @@
-import React, { useEffect } from 'react';
-import { IProduct } from './models';
-import axios from 'axios';
-import { Product } from './components/Product';
+import { Navigation } from "./components/Navigation";
+import { Route, Routes } from 'react-router-dom'
+import { ProductPage } from "./pages/ProductPage";
+import { AboutPage } from "./pages/AboutPage";
 
 function App() {
 
-   const [products, setProducts] = React.useState<IProduct[]>([]);
-
-   async function GetResponse() {
-      const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products?limit=5');
-      setProducts(response.data);
-   }
-
-   useEffect(() => {
-      GetResponse();
-   }, []);
-
    return (
-      <div className="App">
-         <p> Hello everyone! </p>
-         {products.map(product => <Product key={product.id} product={product} />)}
-      </div>
+      <>
+         <Navigation />
+         <Routes>
+            <Route path="/" element={<ProductPage />} />
+            <Route path="/about" element={<AboutPage />} />
+         </Routes>
+      </>
+
    );
 }
 

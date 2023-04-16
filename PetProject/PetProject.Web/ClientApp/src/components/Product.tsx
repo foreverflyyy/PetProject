@@ -1,5 +1,5 @@
 import { IProduct } from "../models";
-import '../styles/product'
+import '../styles/product.css'
 
 interface ProductProps {
    product: IProduct
@@ -11,8 +11,8 @@ export function Product({ product }: ProductProps) {
       <div
          className="product"
       >
-         <img src={product.image} className="product-img" alt={product.title}></img>
-         <p className="">{product.price}</p>
+         <img src={product?.image} className="product-img" alt={product?.title}></img>
+         <p className="">{product?.price}</p>
          <button
             className=""
          >
