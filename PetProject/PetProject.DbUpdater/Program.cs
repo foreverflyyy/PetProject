@@ -4,16 +4,21 @@ using PetProject.DbUpdater;
 using PetProject.Models;
 
 var builder = new ConfigurationBuilder();
+
 // установка пути к текущему каталогу
 builder.SetBasePath(Directory.GetCurrentDirectory());
+
 // получаем конфигурацию из файла appsettings.json
 builder.AddJsonFile("appsettings.json");
+
 // создаем конфигурацию
 var config = builder.Build();
 // получаем строку подключения
+
 string connectionString = config.GetConnectionString("Data:MSSQL:ConnectionString");
 
-var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
+var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>()
+    .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
 var options = optionsBuilder.UseSqlServer(connectionString).Options;
 
 using (ApplicationContext db = new ApplicationContext())

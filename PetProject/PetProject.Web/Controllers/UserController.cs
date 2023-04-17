@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using PetProject.Orchestrators.Interfaces;
 using PetProject.Models;
 using NLog;
-using PetProject.Orchestrators.Implementations;
-using System.Diagnostics.Metrics;
 
 namespace PetProject.Web.Controllers
 {

@@ -12,11 +12,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.Orchestrators", "PetProject.Orchestrators\PetProject.Orchestrators.csproj", "{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}"
 	ProjectSection(ProjectDependencies) = postProject
 		{48497565-3041-494D-9BC3-F99167A908A5} = {48497565-3041-494D-9BC3-F99167A908A5}
+		{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A} = {FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.Models", "PetProject.Models\PetProject.Models.csproj", "{48497565-3041-494D-9BC3-F99167A908A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.DbUpdater", "PetProject.DbUpdater\PetProject.DbUpdater.csproj", "{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.DbUpdater", "PetProject.DbUpdater\PetProject.DbUpdater.csproj", "{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{48497565-3041-494D-9BC3-F99167A908A5} = {48497565-3041-494D-9BC3-F99167A908A5}
 	EndProjectSection
