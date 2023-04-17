@@ -1,32 +1,29 @@
 ﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:28026",
-      "sslPort": 44323
-    }
-  },
-  "profiles": {
-    "PetProject.Web": {
-      "commandName": "Project",
-      "launchBrowser": false,
-      "applicationUrl": "https://localhost:7215;http://localhost:5100",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-
-        /*используется для автоматического добавления необходимых компонентов во время разработки, 
-        чтобы определить, запущен ли прокси-сервер, и запустить его в противном случае*/
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+   "iisSettings": {
+      "windowsAuthentication": false,
+      "anonymousAuthentication": true,
+      "iisExpress": {
+         "applicationUrl": "http://localhost:28026",
+         "sslPort": 44323
       }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+   },
+   "profiles": {
+      "PetProject.Web": {
+         "commandName": "Project",
+         "launchBrowser": false,
+         "applicationUrl": "https://localhost:7215;http://localhost:5100",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+         }
+      },
+      "IIS Express": {
+         "commandName": "IISExpress",
+         "launchBrowser": true,
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+         }
       }
-    }
-  }
+   }
 }

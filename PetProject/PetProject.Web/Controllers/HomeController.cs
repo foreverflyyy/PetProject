@@ -2,13 +2,22 @@
 
 namespace PetProject.Web.Controllers
 {
-    [Route("home")]
-    public class HomeController : Controller
-    {
-        [Route("index/{id}")]
-        public IResult Index(int id)
-        {
-            return Results.Text($"everythings good! {id}!");
-        }
-    }
+   [ApiController]
+   [Route("[controller]")]
+   public class HomeController : ControllerBase
+   {
+      private readonly ILogger<HomeController> _logger;
+
+      public HomeController(ILogger<HomeController> logger)
+      {
+         _logger = logger;
+      }
+
+      [Route("index/{id}")]
+      [HttpGet]
+      public IResult Index(int id)
+      {
+         return Results.Text($"everythings good! {id}!");
+      }
+   }
 }
