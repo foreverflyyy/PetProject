@@ -3,6 +3,7 @@ using PetProject.Orchestrators.Interfaces;
 using PetProject.Models;
 using NLog;
 using PetProject.Orchestrators.Implementations;
+using System.Diagnostics.Metrics;
 
 namespace PetProject.Web.Controllers
 {
@@ -20,19 +21,20 @@ namespace PetProject.Web.Controllers
 
         //[Route("index/{id}")]
         [HttpGet]
-        public string GetUsers()
+        public List<User> GetUsers()
         {
-            mLogger.Info($"Enter in methid GetUsers with path: /api/users/");
-            string user = mUserOrchestrator.GetUsers();
-            return $"everythings good!! {user}";
+            mLogger.Info($"Enter in Controller method GetUsers.");
+            List<User> users = mUserOrchestrator.GetUsers();
+            return users;
         }
         
         //[Route("index/{id}")]
         [HttpPost]
-        public IResult AddUsers()
+        public User AddUsers(User user)
         {
-            mLogger.Info($"Enter in methid GetUsers with path: /api/users/");
-            return Results.Text($"everythings good!!");
+            mLogger.Info($"Enter in Controller method AddUsers");
+            User newUser = mUserOrchestrator.AddUser(user);
+            return newUser;
         }
     }
 }

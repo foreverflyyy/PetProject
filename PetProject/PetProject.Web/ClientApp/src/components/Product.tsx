@@ -11,7 +11,8 @@ export function User({ user }: ProductProps) {
       <div
          className="user"
       >
-         <p className="">{user.name}</p>
+         <p className="">Name: {user.name}</p>
+         <p className="">Age: {user.age}</p>
          <button
             className=""
          >

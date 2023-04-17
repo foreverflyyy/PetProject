@@ -4,7 +4,7 @@ namespace PetProject.Orchestrators.Interfaces
 {
     public interface IUserOrchestrator
     {
-        public string GetUsers();
-        public string AddUser(User user);
+        public List<User> GetUsers();
+        public User AddUser(User user);
     }
 }

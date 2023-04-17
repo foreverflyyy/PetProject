@@ -17,7 +17,7 @@ export function useUsers() {
       try {
          setError('');
          setLoading(true);
-         const response = await axios.get<IUser[]>('https://localhost:7215/users');
+         const response = await axios.get<IUser[]>('https://localhost:7215/user');
          setUsers(response.data);
          setLoading(false);
       } catch (e: unknown) {

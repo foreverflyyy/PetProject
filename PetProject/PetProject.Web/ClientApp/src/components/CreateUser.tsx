@@ -6,7 +6,6 @@ import { ErrorMessage } from './ErrorMessage';
 
 const userData: IUser = {
    name: '',
-   age: 0,
 }
 
 interface CreateUseProps {
@@ -16,21 +15,22 @@ interface CreateUseProps {
 export function CreateUser({ onCreate }: CreateUseProps) {
 
    const [valueName, setValueName] = useState('');
-   const [valueAge, setValueAge] = useState(0);
+   const [valueAge, setValueAge] = useState('');
    const [error, setError] = useState('');
 
    const submitHandler = async (event: React.FormEvent) => {
       event.preventDefault();
       setError('');
 
-      if (valueName.trim().length === 0 || valueAge === 0) {
-         setError('Please enter a valid name pr age');
+      if (valueName.trim().length === 0 || Number(valueAge) === 0) {
+         setError('Please enter a valid name or age');
          return;
       }
+      console.log(`Name: ${valueName}, Age: ${valueAge}`);
 
       userData.name = valueName;
-      userData.age = valueAge;
-      const response = await axios.post('https://localhost:7215/users', userData);
+      userData.age = Number(valueAge);
+      const response = await axios.post('https://localhost:7215/user', userData);
 
       onCreate(response.data);
    }
@@ -40,13 +40,7 @@ export function CreateUser({ onCreate }: CreateUseProps) {
    }
 
    const changeAge = async (event: React.ChangeEvent<HTMLInputElement>) => {
-
-      if (typeof event.target.value !== 'number') {
-         setError('Please enter a valid name pr age');
-         return;
-      }
-      setError('');
-      setValueAge(Number(event.target.value));
+      setValueAge(event.target.value);
    }
 
    return (
@@ -59,7 +53,7 @@ export function CreateUser({ onCreate }: CreateUseProps) {
             onChange={changeName}
          />
          <input
-            type="number"
+            type="text"
             className="form-create-user"
             placeholder="Enter user's age"
             value={valueAge}
