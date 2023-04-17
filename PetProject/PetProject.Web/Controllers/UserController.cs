@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PetProject.Orchestrators.Interfaces;
 using PetProject.Models;
+using NLog;
 using PetProject.Orchestrators.Implementations;
 
 namespace PetProject.Web.Controllers
@@ -9,13 +10,11 @@ namespace PetProject.Web.Controllers
    [Route("[controller]")]
    public class UserController : ControllerBase
    {
-        private readonly ILogger<UserController> Logger;
+        private static readonly Logger mLogger = LogManager.GetLogger("UserControllerLogger");
         private readonly IUserOrchestrator mUserOrchestrator;
 
-        public UserController(ILogger<UserController> logger,
-            IUserOrchestrator userOrchestrator)
+        public UserController(IUserOrchestrator userOrchestrator)
         {
-            Logger = logger;
             mUserOrchestrator = userOrchestrator;
         }
 
@@ -23,7 +22,7 @@ namespace PetProject.Web.Controllers
         [HttpGet]
         public string GetUsers()
         {
-            Logger.LogWarning($"Enter in methid GetUsers with path: /api/users/");
+            mLogger.Info($"Enter in methid GetUsers with path: /api/users/");
             string user = mUserOrchestrator.GetUsers();
             return $"everythings good!! {user}";
         }
@@ -32,7 +31,7 @@ namespace PetProject.Web.Controllers
         [HttpPost]
         public IResult AddUsers()
         {
-            Logger.LogWarning($"Enter in methid GetUsers with path: /api/users/");
+            mLogger.Info($"Enter in methid GetUsers with path: /api/users/");
             return Results.Text($"everythings good!!");
         }
     }
