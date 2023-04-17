@@ -4,7 +4,7 @@ import { ErrorMessage } from '../components/ErrorMessage';
 import { Loading } from '../components/Loading';
 import { Modal } from '../components/Modal';
 import { User } from '../components/Product';
-import { useUsers } from '../hooks/products';
+import { useUsers } from '../hooks/users';
 import { IUser } from '../models';
 import '../styles/user.css'
 import { ModalContext } from '../context/ModalContext';

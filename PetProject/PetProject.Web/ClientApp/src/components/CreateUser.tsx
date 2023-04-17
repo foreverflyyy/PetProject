@@ -30,7 +30,7 @@ export function CreateUser({ onCreate }: CreateUseProps) {
 
       userData.name = valueName;
       userData.age = valueAge;
-      const response = await axios.post('https://localhost:5001/api/users', userData);
+      const response = await axios.post('https://localhost:7215/users', userData);
 
       onCreate(response.data);
    }

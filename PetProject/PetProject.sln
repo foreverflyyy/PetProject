@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Web", "PetProject.Web\PetProject.Web.csproj", "{310D23F6-776B-4AC0-8DA2-C0C4A70663DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.Web", "PetProject.Web\PetProject.Web.csproj", "{310D23F6-776B-4AC0-8DA2-C0C4A70663DF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{48497565-3041-494D-9BC3-F99167A908A5} = {48497565-3041-494D-9BC3-F99167A908A5}
+		{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910} = {8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Orchestrators", "PetProject.Orchestrators\PetProject.Orchestrators.csproj", "{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}"
+	ProjectSection(ProjectDependencies) = postProject
+		{48497565-3041-494D-9BC3-F99167A908A5} = {48497565-3041-494D-9BC3-F99167A908A5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Models", "PetProject.Models\PetProject.Models.csproj", "{48497565-3041-494D-9BC3-F99167A908A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,14 @@ Global
 		{310D23F6-776B-4AC0-8DA2-C0C4A70663DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{310D23F6-776B-4AC0-8DA2-C0C4A70663DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{310D23F6-776B-4AC0-8DA2-C0C4A70663DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF7E41C-66A2-418B-8B39-9C8CA7B2B910}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48497565-3041-494D-9BC3-F99167A908A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48497565-3041-494D-9BC3-F99167A908A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48497565-3041-494D-9BC3-F99167A908A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48497565-3041-494D-9BC3-F99167A908A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
