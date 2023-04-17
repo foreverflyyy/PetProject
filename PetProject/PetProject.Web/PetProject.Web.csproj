@@ -32,6 +32,7 @@
   <ItemGroup>
       <ProjectReference Include="..\PetProject.Orchestrators\PetProject.Orchestrators.csproj" />
       <ProjectReference Include="..\PetProject.Models\PetProject.Models.csproj" />
+      <ProjectReference Include="..\PetProject.DbUpdater\PetProject.DbUpdater.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
