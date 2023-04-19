@@ -26,6 +26,7 @@
 
   <ItemGroup>
   <ProjectReference Include="..\PetProject.Models\PetProject.Models.csproj" />
+  <ProjectReference Include="..\PetProject.DataContext.MsSql\PetProject.DataContext.MsSql.csproj" />
   </ItemGroup>
 
   <ItemGroup>

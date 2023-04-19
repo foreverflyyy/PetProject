@@ -22,6 +22,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.DbUpdater", "Pet
 		{48497565-3041-494D-9BC3-F99167A908A5} = {48497565-3041-494D-9BC3-F99167A908A5}
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.DataContext.MsSql", "PetProject.DataContext.MsSql\PetProject.DataContext.MsSql.csproj", "{A0AEEB59-F060-462B-97E6-BDD1F468A7A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.DataContext", "PetProject.DataContext\PetProject.DataContext.csproj", "{3FC6CD0C-B0C7-4375-A01F-5BBD200B2028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0AEEB59-F060-462B-97E6-BDD1F468A7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0AEEB59-F060-462B-97E6-BDD1F468A7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0AEEB59-F060-462B-97E6-BDD1F468A7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0AEEB59-F060-462B-97E6-BDD1F468A7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC6CD0C-B0C7-4375-A01F-5BBD200B2028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC6CD0C-B0C7-4375-A01F-5BBD200B2028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC6CD0C-B0C7-4375-A01F-5BBD200B2028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC6CD0C-B0C7-4375-A01F-5BBD200B2028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
