@@ -1,26 +1,27 @@
 ﻿using NLog;
 using PetProject.Orchestrators.Interfaces;
 using PetProject.Models;
-using System.Text.Json;
+using PetProject.DataContext.MsSql;
 
 namespace PetProject.Orchestrators.Implementations
 {
     public class UserOrchestrator : IUserOrchestrator 
     {
         private static readonly Logger mLogger = LogManager.GetLogger("UserOrchestratorLogger");
-
-        public UserOrchestrator() 
+        private readonly MSSqlContext mContext;
+        public UserOrchestrator(MSSqlContext context) 
         {
-            
+            mContext= context;
         }
 
-        List<User> users = new List<User>() { new User() { Id = Guid.NewGuid(), Name = "Nekit", Age = 20} };
+       /* List<User> users = new List<User>() { new User() { Id = Guid.NewGuid(), Name = "Nekit", Age = 20},
+                            new User() { Id = Guid.NewGuid(), Name = "Max", Age = 21}};*/
 
         public List<User> GetUsers()
         {
             mLogger.Info("Start GET Orchestrator method GetUsers");
 
-            users.Add(new User() { Id = Guid.NewGuid(), Name = "Max", Age = 21});
+            var users = mContext.Users.ToList();
 
             return users;
         }
@@ -30,7 +31,9 @@ namespace PetProject.Orchestrators.Implementations
             mLogger.Info("Start Post Orchestrator method AddUser");
 
             user.Id = Guid.NewGuid();
-            users.Add(user);
+            mContext.Users.Add(user);
+
+            mContext.SaveChanges();
             return user;
         }
     }

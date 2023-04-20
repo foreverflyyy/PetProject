@@ -17,8 +17,8 @@ namespace PetProject.Web.Configuration
         public static void RegistrationUserMsSqlServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddDbContext<MsSqlContext>(options => options.UseSqlServer(configuration.GetSection("Data:MSSQL:ConnectionString").Value), ServiceLifetime.Transient);
-            services.AddDbContext<IUserContext, MsSqlContext>();
+            services.AddDbContext<MSSqlContext>(options => options.UseSqlServer(configuration.GetSection("Data:MSSQL:ConnectionString").Value), ServiceLifetime.Transient);
+            services.AddDbContext<IUserContext, MSSqlContext>();
         }
 
         /// <summary>

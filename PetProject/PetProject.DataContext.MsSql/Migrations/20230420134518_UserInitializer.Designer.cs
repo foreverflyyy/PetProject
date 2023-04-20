@@ -11,8 +11,8 @@ using PetProject.DataContext.MsSql;
 
 namespace PetProject.DataContext.MSSQL.Migrations
 {
-    [DbContext(typeof(MsSqlContext))]
-    [Migration("20230420133211_UserInitializer")]
+    [DbContext(typeof(MSSqlContext))]
+    [Migration("20230420134518_UserInitializer")]
     partial class UserInitializer
     {
         /// <inheritdoc />

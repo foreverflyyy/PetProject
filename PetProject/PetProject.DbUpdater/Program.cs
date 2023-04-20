@@ -19,7 +19,7 @@ namespace PetProject.DbUpdater
 
         public static void ConfigurePostgreSqlServices(IServiceCollection services)
         {
-            services.AddDbContext<IAppContext, MsSqlContext>(options =>
+            services.AddDbContext<IAppContext, MSSqlContext>(options =>
                 options.UseSqlServer(Configuration.GetSection("Data:MSSQL:ConnectionString").Value));
 
             services.AddTransient<IMigrationService, MigrationPostgreSqlService>();

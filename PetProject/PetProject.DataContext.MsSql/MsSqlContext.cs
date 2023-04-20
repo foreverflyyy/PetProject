@@ -9,9 +9,9 @@ using Microsoft.Extensions.Logging;
 
 namespace PetProject.DataContext.MsSql
 {
-    public class MsSqlContext : BaseContext
+    public class MSSqlContext : BaseContext
     {
-        public MsSqlContext(DbContextOptions<MsSqlContext> options, ILoggerFactory loggerFactory) : base(options, loggerFactory)
+        public MSSqlContext(DbContextOptions<MSSqlContext> options, ILoggerFactory loggerFactory) : base(options, loggerFactory)
         {
         }
     }

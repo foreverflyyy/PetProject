@@ -10,8 +10,8 @@ using PetProject.DataContext.MsSql;
 
 namespace PetProject.DataContext.MSSQL.Migrations
 {
-    [DbContext(typeof(MsSqlContext))]
-    partial class MsSqlContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MSSqlContext))]
+    partial class MSSqlContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
