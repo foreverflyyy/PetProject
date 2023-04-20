@@ -20,6 +20,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.DbUpdater", "PetProject.DbUpdater\PetProject.DbUpdater.csproj", "{FE19295C-3F44-4ED6-9AA0-98AAB8A7153A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{48497565-3041-494D-9BC3-F99167A908A5} = {48497565-3041-494D-9BC3-F99167A908A5}
+		{A0AEEB59-F060-462B-97E6-BDD1F468A7A9} = {A0AEEB59-F060-462B-97E6-BDD1F468A7A9}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetProject.DataContext.MsSql", "PetProject.DataContext.MsSql\PetProject.DataContext.MsSql.csproj", "{A0AEEB59-F060-462B-97E6-BDD1F468A7A9}"
