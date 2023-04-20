@@ -1,18 +1,18 @@
-import { IProduct } from "../models";
-import '../styles/product.css'
+import { IUser } from "../models";
+import '../styles/user.css'
 
 interface ProductProps {
-   product: IProduct
+   user: IUser
 }
 
-export function Product({ product }: ProductProps) {
+export function User({ user }: ProductProps) {
 
    return (
       <div
-         className="product"
+         className="user"
       >
-         <img src={product?.image} className="product-img" alt={product?.title}></img>
-         <p className="">{product?.price}</p>
+         <p className="">Name: {user.name}</p>
+         <p className="">Age: {user.age}</p>
          <button
             className=""
          >

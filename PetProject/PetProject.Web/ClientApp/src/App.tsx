@@ -1,6 +1,6 @@
 import { Navigation } from "./components/Navigation";
-import { Route, Routes } from 'react-router-dom'
-import { ProductPage } from "./pages/ProductPage";
+import { Route, Routes } from 'react-router-dom';
+import { UserPage } from "./pages/UserPage";
 import { AboutPage } from "./pages/AboutPage";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <>
          <Navigation />
          <Routes>
-            <Route path="/" element={<ProductPage />} />
+            <Route path="/" element={<UserPage />} />
             <Route path="/about" element={<AboutPage />} />
          </Routes>
       </>

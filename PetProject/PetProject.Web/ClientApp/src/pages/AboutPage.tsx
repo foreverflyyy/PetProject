@@ -1,7 +1,10 @@
+import { useInfo } from "../hooks/info";
 
 
 export function AboutPage() {
+   const { message } = useInfo();
+
    return (
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum, maxime. </p>
+      <p>{message}. </p>
    )
 }

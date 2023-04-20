@@ -1,47 +1,46 @@
 import React, { useState } from 'react';
-import '../styles/product.css'
-import { IProduct } from '../models';
+import '../styles/user.css'
+import { IUser } from '../models';
 import axios from 'axios';
 import { ErrorMessage } from './ErrorMessage';
 
-const productData: IProduct = {
-   title: '',
-   price: 1000,
-   description: 'This is a product',
-   image: 'https://i.pravatar.cc',
-   category: 'electronic',
-   rating: {
-      rate: 42,
-      count: 10
-   }
+const userData: IUser = {
+   name: '',
 }
 
 interface CreateUseProps {
-   onCreate: (product: IProduct) => void
+   onCreate: (product: IUser) => void
 }
 
 export function CreateUser({ onCreate }: CreateUseProps) {
 
-   const [value, setValue] = useState('');
+   const [valueName, setValueName] = useState('');
+   const [valueAge, setValueAge] = useState('');
    const [error, setError] = useState('');
 
    const submitHandler = async (event: React.FormEvent) => {
       event.preventDefault();
       setError('');
 
-      if (value.trim().length === 0) {
-         setError('Please enter a value');
+      if (valueName.trim().length === 0 || Number(valueAge) === 0) {
+         setError('Please enter a valid name or age');
          return;
       }
+      console.log(`Name: ${valueName}, Age: ${valueAge}`);
 
-      productData.title = value;
-      const response = await axios.post('https://fakestoreapi.com/products', productData);
+      userData.name = valueName;
+      userData.age = Number(valueAge);
+      const response = await axios.post('https://localhost:7215/user', userData);
 
       onCreate(response.data);
    }
 
-   const changeHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
+   const changeName = async (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValueName(event.target.value);
+   }
+
+   const changeAge = async (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValueAge(event.target.value);
    }
 
    return (
@@ -50,8 +49,15 @@ export function CreateUser({ onCreate }: CreateUseProps) {
             type="text"
             className="form-create-user"
             placeholder="Enter your user name"
-            value={value}
-            onChange={changeHandler}
+            value={valueName}
+            onChange={changeName}
+         />
+         <input
+            type="text"
+            className="form-create-user"
+            placeholder="Enter user's age"
+            value={valueAge}
+            onChange={changeAge}
          />
 
          <ErrorMessage message={error} />

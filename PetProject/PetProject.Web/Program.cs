@@ -1,25 +1,53 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore;
+using NLog.Web;
 
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+namespace PetProject.Web
 {
-    app.UseHsts();
+    /// <summary>
+    /// Entry point class
+    /// </summary>
+    public class Program
+    {
+        /// <summary>
+        /// Entry point
+        /// </summary>
+        public static void Main(string[] args)
+        {
+            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            try
+            {
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            finally
+            {
+                // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+                NLog.LogManager.Shutdown();
+            }
+        }
+
+
+        /// <summary>
+        /// РЎРѕР·РґР°РЅРёРµ Р±РёР»РґРµСЂР° РґР»СЏ WebHost
+        /// </summary>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(options =>
+                {
+                    options.AddJsonFile("settings.json", optional: false, reloadOnChange: false);
+                    options.AddCommandLine(args);
+                })
+                .CaptureStartupErrors(true)
+                .UseStartup<Startup>().UseKestrel(options =>
+                {
+                    options.Limits.MaxRequestBodySize = 51 * 1024 * 1024; //51MB
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Trace);
+                })
+                .UseNLog();
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-
-// Позволяет обслуживать файлы
-app.UseStaticFiles();
-app.UseRouting();
-
-
-app.MapControllers();
-
-// Включает обслуживание документа по умолчанию для любого неизвестного запроса, получаемого сервером
-app.MapFallbackToFile("index.html"); ;
-
-app.Run();

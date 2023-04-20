@@ -33,7 +33,13 @@
    line-height: 34px;
 }*/
 
-.product-img {
+.user{
+   max-width: 200px;
+   border: 2px solid rgba(0, 0, 255, 0.404);
+   border-radius: 10px;
+}
+
+.user-img {
    width: 100px;
 }
 

@@ -1,4 +1,4 @@
-import '../styles/product.css'
+import '../styles/user.css'
 
 export function Loading() {
    return (

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Neolant.NsPlugin.DbUpdater": {
+      "commandName": "Project",
+      "commandLineArgs": "-m -f"
+    },
+    "Create": {
+      "commandName": "Project",
+      "commandLineArgs": "-r -f"
+    }
+  }
+}
