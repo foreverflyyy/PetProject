@@ -1,4 +1,4 @@
-﻿using PetProject.Models;
+﻿using PetProject.Entities.Models;
 
 namespace PetProject.Orchestrators.Interfaces
 {

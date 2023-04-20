@@ -32,13 +32,12 @@ namespace PetProject.Web
             services.AddOrchestrators(Configuration);;
             services.AddControllers();
             services.AddCors();
+            services.AddDataLayer();
 
             // добавление сервиса компрессии
             //services.AddResponseCompression(options => options.EnableForHttps = true);
             // - следующая строка: быстрее и эффективнее на больших данных. Но испольуется компрессия на всем проекте,
             // поэтому используем по умолчанию - быструю компрессию
-
-            //services.AddDataLayer();
 
             //services.AddCacheService();
 

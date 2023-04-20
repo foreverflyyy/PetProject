@@ -13,9 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PetProject.Models\PetProject.Models.csproj" />
     <ProjectReference Include="..\PetProject.DbUpdater\PetProject.DbUpdater.csproj" />
     <ProjectReference Include="..\PetProject.DataContext.MSSQL\PetProject.DataContext.MSSQL.csproj" />
+    <ProjectReference Include="..\PetProject.Entities\PetProject.Entities.csproj" />
+    <ProjectReference Include="..\PetProject.DataAccess\PetProject.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

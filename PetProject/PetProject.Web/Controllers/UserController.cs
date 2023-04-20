@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PetProject.Orchestrators.Interfaces;
-using PetProject.Models;
+using PetProject.Entities.Models;
 using NLog;
 
 namespace PetProject.Web.Controllers

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PetProject.Models\PetProject.Models.csproj" />
+    <ProjectReference Include="..\PetProject.Entities\PetProject.Entities.csproj" />
   </ItemGroup>
   
 </Project>

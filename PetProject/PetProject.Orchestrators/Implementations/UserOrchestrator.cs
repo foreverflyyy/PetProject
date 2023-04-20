@@ -1,7 +1,9 @@
 ﻿using NLog;
 using PetProject.Orchestrators.Interfaces;
-using PetProject.Models;
+using PetProject.Entities.Models;
 using PetProject.DataContext.MsSql;
+using PetProject.DataContext.Interfaces;
+using PetProject.DataAccess.Repositories.Interfaces;
 
 namespace PetProject.Orchestrators.Implementations
 {
@@ -9,19 +11,20 @@ namespace PetProject.Orchestrators.Implementations
     {
         private static readonly Logger mLogger = LogManager.GetLogger("UserOrchestratorLogger");
         private readonly MSSqlContext mContext;
-        public UserOrchestrator(MSSqlContext context) 
+
+        private readonly IRepository<IUserContext, User, Guid> mUser;
+
+        public UserOrchestrator(MSSqlContext context, IRepository<IUserContext, User, Guid> user) 
         {
             mContext= context;
+            mUser = user;
         }
-
-       /* List<User> users = new List<User>() { new User() { Id = Guid.NewGuid(), Name = "Nekit", Age = 20},
-                            new User() { Id = Guid.NewGuid(), Name = "Max", Age = 21}};*/
 
         public List<User> GetUsers()
         {
             mLogger.Info("Start GET Orchestrator method GetUsers");
 
-            var users = mContext.Users.ToList();
+            var users = mUser.GetAll().ToList();
 
             return users;
         }
@@ -29,11 +32,9 @@ namespace PetProject.Orchestrators.Implementations
         public User AddUser(User user)
         {
             mLogger.Info("Start Post Orchestrator method AddUser");
+            mUser.Add(user);
 
-            user.Id = Guid.NewGuid();
-            mContext.Users.Add(user);
-
-            mContext.SaveChanges();
+            mUser.SaveChanges();
             return user;
         }
     }

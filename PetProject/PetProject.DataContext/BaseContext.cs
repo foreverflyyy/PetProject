@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PetProject.DataContext.Interfaces;
-using PetProject.Models;
+using PetProject.Entities.Models;
 
 namespace PetProject.DataContext
 {

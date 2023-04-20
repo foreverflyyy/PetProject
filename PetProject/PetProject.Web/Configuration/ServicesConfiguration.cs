@@ -3,6 +3,8 @@ using PetProject.Orchestrators.Implementations;
 using PetProject.DataContext.MsSql;
 using Microsoft.EntityFrameworkCore;
 using PetProject.DataContext.Interfaces;
+using PetProject.DataAccess.Repositories.Interfaces;
+using PetProject.DataAccess.Repositories.Implementations;
 
 namespace PetProject.Web.Configuration
 {
@@ -26,10 +28,7 @@ namespace PetProject.Web.Configuration
         /// </summary>
         public static void AddDataLayer(this IServiceCollection services)
         {
-            /*services.AddScoped(typeof(IRepository<,,>), typeof(BaseRepository<,,>));
-            services.AddScoped(typeof(FileRepository));
-
-            services.AddScoped<IApiNSFacade, ApiNSFacade>();*/
+            services.AddScoped(typeof(IRepository<,,>), typeof(BaseRepository<,,>));
         }
 
         /// <summary>
