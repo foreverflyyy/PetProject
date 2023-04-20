@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetProject.Orchestrators.Base
 {
-    internal class BaseOrchestrator
+    public class BaseOrchestrator
     {
     }
 }
