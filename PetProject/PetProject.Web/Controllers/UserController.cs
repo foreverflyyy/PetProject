@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using PetProject.Orchestrators.Interfaces;
 using PetProject.Entities.Models;
 using NLog;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PetProject.Web.Controllers
 {
@@ -33,6 +34,27 @@ namespace PetProject.Web.Controllers
             mLogger.Info($"Enter in Controller method AddUsers");
             User newUser = mUserOrchestrator.AddUser(user);
             return newUser;
+        }
+
+        [HttpPost("delete")]
+        public IResult DeleteUser(User user)
+        {
+            mUserOrchestrator.DeleteUser(user);
+            return Results.Ok();
+        }
+
+        [Authorize]
+        [HttpGet("info")]
+        public IResult StatusAuthorization()
+        {
+            return Results.Text("You are authorizated!");
+        }
+
+        [HttpPost("login")]
+        public string AuthorizationUser(string userName)
+        {
+            string token = mUserOrchestrator.AuthorizationUser(userName);
+            return token;
         }
     }
 }

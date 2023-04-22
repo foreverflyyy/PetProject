@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PetProject.DataContext.MsSql;
+using PetProject.DataContext.MSSql;
 using System;
 using PetProject.DataContext.Interfaces;
 using CommandLine;

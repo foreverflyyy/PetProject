@@ -1,12 +1,14 @@
 import React from 'react';
 import '../styles/user.css'
+import { IModalWindow } from '../models';
 
 interface ModalProps {
+   modalWindow: IModalWindow;
    children: React.ReactNode;
    onClose: () => void;
 }
 
-export function Modal({ children, onClose }: ModalProps) {
+export function Modal({ modalWindow, children, onClose }: ModalProps) {
 
    return (
       <>
@@ -15,7 +17,7 @@ export function Modal({ children, onClose }: ModalProps) {
          </div>
          <div className="modal-window">
             <div className="modal-content">
-               <h1>Create new User</h1>
+               <h1>{modalWindow.title}</h1>
                {children}
             </div>
          </div>

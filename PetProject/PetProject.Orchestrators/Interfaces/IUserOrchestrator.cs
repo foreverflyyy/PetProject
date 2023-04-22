@@ -6,5 +6,7 @@ namespace PetProject.Orchestrators.Interfaces
     {
         public List<User> GetUsers();
         public User AddUser(User user);
+        public string DeleteUser(User user);
+        public string AuthorizationUser(string userName);
     }
 }

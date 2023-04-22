@@ -3,3 +3,10 @@ export interface IUser {
    name: string,
    age?: number
 }
+
+export interface IModalWindow {
+   user: IUser,
+   title: string,
+   btnText: string,
+   flag: boolean
+}

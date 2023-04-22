@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/user.css'
-import { IUser } from '../models';
+import { IModalWindow, IUser } from '../models';
 import axios from 'axios';
 import { ErrorMessage } from './ErrorMessage';
 
@@ -9,10 +9,11 @@ const userData: IUser = {
 }
 
 interface CreateUseProps {
+   modalWindow: IModalWindow,
    onCreate: (product: IUser) => void
 }
 
-export function CreateUser({ onCreate }: CreateUseProps) {
+export function CreateUser({ modalWindow, onCreate }: CreateUseProps) {
 
    const [valueName, setValueName] = useState('');
    const [valueAge, setValueAge] = useState('');
@@ -61,7 +62,7 @@ export function CreateUser({ onCreate }: CreateUseProps) {
          />
 
          <ErrorMessage message={error} />
-         <button type="submit" className="btn-create-user">Create</button>
+         <button type="submit" className="btn-create-user">{modalWindow.btnText}</button>
       </form>
    )
 }

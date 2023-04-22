@@ -1,5 +1,6 @@
 ﻿//using Client.Application.Services.Converters;
 using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using PetProject.Web.Configuration;
 
@@ -33,6 +34,7 @@ namespace PetProject.Web
             services.AddControllers();
             services.AddCors();
             services.AddDataLayer();
+            services.AddAuthorization(Configuration);
 
             // добавление сервиса компрессии
             //services.AddResponseCompression(options => options.EnableForHttps = true);
@@ -73,12 +75,7 @@ namespace PetProject.Web
                             .AllowAnyMethod());
             }
             else
-            {
                 app.UseExceptionHandler("/Error");
-            }
-
-            // подключение компрессии
-            //app.UseResponseCompression();
 
             app.UseCookiePolicy(
                 new CookiePolicyOptions()
@@ -89,22 +86,26 @@ namespace PetProject.Web
             );
 
             app.UseStaticFiles();
-            //app.UseSpaStaticFiles();
-
+            
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
 
+            // подключение компрессии
+            //app.UseResponseCompression();
+
+            //app.UseSpaStaticFiles();
             /*app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
-                {
                     spa.UseProxyToSpaDevelopmentServer("https://localhost:44477");
-                }
             });*/
         }
     }

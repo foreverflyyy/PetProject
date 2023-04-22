@@ -13,6 +13,18 @@ export function useUsers() {
       setUsers(prev => [...prev, user]);
    }
 
+   function DeleteUser(user: IUser) {
+      const index: number = users.findIndex(u => u.id === user.id);
+      users.splice(index, 1);
+      setUsers(users);
+   }
+
+   function UpdateUser(user: IUser) {
+      const index: number = users.findIndex(u => u.id === user.id);
+      users[index] = user;
+      setUsers(users);
+   }
+
    async function GetResponse() {
       try {
          setError('');
@@ -31,5 +43,5 @@ export function useUsers() {
       GetResponse();
    }, []);
 
-   return { error, loading, users, AddUser }
+   return { error, loading, users, AddUser, DeleteUser, UpdateUser }
 }

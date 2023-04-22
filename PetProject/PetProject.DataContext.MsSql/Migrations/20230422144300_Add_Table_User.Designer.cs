@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetProject.DataContext.MSSql;
 
@@ -11,9 +12,11 @@ using PetProject.DataContext.MSSql;
 namespace PetProject.DataContext.MSSQL.Migrations
 {
     [DbContext(typeof(MSSqlContext))]
-    partial class MSSqlContextModelSnapshot : ModelSnapshot
+    [Migration("20230422144300_Add_Table_User")]
+    partial class Add_Table_User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
